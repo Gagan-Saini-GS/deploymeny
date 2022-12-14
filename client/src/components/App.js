@@ -1,6 +1,6 @@
-import Navbar from "./components/Navbar";
-import Login from "./components/Login";
-import Feed from "./components/Feed";
+import Navbar from "./Navbar";
+import Login from "./Login";
+import Feed from "./Feed";
 import { useState } from "react";
 
 function App() {
