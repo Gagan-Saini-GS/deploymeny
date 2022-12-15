@@ -29,8 +29,12 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model("newuser", userSchema);
 
-app.get("/", (req, res) => {
-  res.send("Hi");
+// app.get("/", (req, res) => {
+//   res.send("Hi");
+// });
+
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/build" + "/index.html");
 });
 
 app.get("/feed", (req, res) => {
