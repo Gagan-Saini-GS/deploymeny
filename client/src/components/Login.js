@@ -24,6 +24,7 @@ function Login(props) {
         if (accessToken !== undefined && accessToken !== "") {
           localStorage.setItem("accessToken", accessToken);
           props.loadAppPage();
+          props.setFeed(true);
         }
       });
   }

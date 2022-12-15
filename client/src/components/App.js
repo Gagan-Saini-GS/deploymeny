@@ -1,16 +1,25 @@
 import Navbar from "./Navbar";
 import Login from "./Login";
 import Feed from "./Feed";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [feed, setFeed] = useState(false);
   const [data, setData] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
 
-  function loadAppPage() {
-    setFeed(true);
+  const accessToken = localStorage.getItem("accessToken");
+  useEffect(() => {
+    if (accessToken !== null && accessToken !== "") {
+      setFeed(true);
+    }
+  }, []);
 
+  useEffect(() => {
+    loadAppPage();
+  }, []);
+
+  function loadAppPage() {
     fetch("/currentUser", {
       method: "POST",
       headers: {
@@ -33,11 +42,11 @@ function App() {
 
   return (
     <div className="app-container">
-      <Navbar />
+      <Navbar setFeed={setFeed} />
       {feed ? (
         <Feed currentUser={currentUser} data={data} />
       ) : (
-        <Login loadAppPage={loadAppPage} />
+        <Login loadAppPage={loadAppPage} setFeed={setFeed} />
       )}
     </div>
   );
