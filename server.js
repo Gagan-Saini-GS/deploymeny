@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 
 const app = express();
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(__dirname + "./build"));
 
 const DB =
   "mongodb+srv://Gagan_Saini:gaganiscoder@cluster0.afqpweg.mongodb.net/Impact?retryWrites=true&w=majority";
