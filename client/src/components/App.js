@@ -1,54 +1,68 @@
 import Navbar from "./Navbar";
 import Login from "./Login";
 import Feed from "./Feed";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 function App() {
   const [feed, setFeed] = useState(false);
-  const [data, setData] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
 
-  const accessToken = localStorage.getItem("accessToken");
-  useEffect(() => {
-    if (accessToken !== null && accessToken !== "") {
-      setFeed(true);
-    }
-  }, []);
+  // const accessToken = localStorage.getItem("accessToken");
+  // useEffect(() => {
+  //   if (accessToken !== null && accessToken !== "") {
+  //     setFeed(true);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    loadAppPage();
-  }, []);
+  // useEffect(() => {
+  //   loadAppPage();
+  // }, []);
 
-  function loadAppPage() {
-    fetch("/currentUser", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        accessToken: localStorage.getItem("accessToken"),
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.user);
-        setCurrentUser(data.user);
-      });
+  // function loadAppPage() {
+  //   fetch("/currentUser", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-type": "application/json; charset=UTF-8",
+  //       accessToken: localStorage.getItem("accessToken"),
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data.user);
+  //       setCurrentUser(data.user);
+  //     });
 
-    fetch("/feed")
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      });
+  //   fetch("/feed")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setData(data);
+  //     });
+  // }
+
+  function setFeedSection() {
+    setFeed(true);
   }
 
   return (
-    <div className="app-container">
-      <Navbar setFeed={setFeed} />
-      {feed ? (
-        <Feed currentUser={currentUser} data={data} />
-      ) : (
-        <Login loadAppPage={loadAppPage} setFeed={setFeed} />
-      )}
-    </div>
+    <Router>
+      <div className="app-container">
+        <Navbar setFeedSection={setFeedSection} />
+        <Routes>
+          <Route path="/" element={<Navigate to="/feed" />} />
+          <Route path="/feed" element={<Feed />} />
+          <Route
+            path="/login"
+            element={<Login setFeedSection={setFeedSection} />}
+          />
+        </Routes>
+        {feed && <div>Feed section is true</div>}
+      </div>
+    </Router>
   );
 }
 

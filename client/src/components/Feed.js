@@ -1,10 +1,12 @@
 import React from "react";
 
-function Feed(props) {
+function Feed() {
   return (
     <div>
       <h1>Feed Page</h1>
-      <p>{props.currentUser.username}</p>
+      <p>UserName</p>
+      <p>UserEmail</p>
+      {/* <p>{props.currentUser.username}</p>
       <p>{props.currentUser.useremail}</p>
       {props.data.map((item, index) => {
         return (
@@ -13,7 +15,7 @@ function Feed(props) {
             <h3>{item.useremail}</h3>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }
