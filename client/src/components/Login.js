@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 function Login(props) {
-  // let [accessToken, setAccessToken] = useState("");
-
   const [currentUser, setCurrentUser] = useState({});
 
   function submitData() {
@@ -18,27 +16,6 @@ function Login(props) {
     console.log(currentUser);
 
     props.setFeedSection();
-
-    //   fetch("/login", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       username: username,
-    //       useremail: useremail,
-    //     }),
-    //     headers: {
-    //       "Content-type": "application/json; charset=UTF-8",
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       accessToken = data.accessToken;
-    //       setAccessToken(data.accessToken);
-    //       if (accessToken !== undefined && accessToken !== "") {
-    //         localStorage.setItem("accessToken", accessToken);
-    //         props.loadAppPage();
-    //         props.setFeed(true);
-    //       }
-    //     });
   }
 
   return (

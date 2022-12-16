@@ -1,9 +1,4 @@
 function Navbar(props) {
-  // function logout() {
-  //   localStorage.removeItem("accessToken");
-  //   props.setFeed(false);
-  // }
-
   return (
     <div className="navbar">
       <img className="nav-img" src="image/gagan.jpg" alt="" />

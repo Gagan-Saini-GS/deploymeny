@@ -12,38 +12,6 @@ import {
 function App() {
   const [feed, setFeed] = useState(false);
 
-  // const accessToken = localStorage.getItem("accessToken");
-  // useEffect(() => {
-  //   if (accessToken !== null && accessToken !== "") {
-  //     setFeed(true);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   loadAppPage();
-  // }, []);
-
-  // function loadAppPage() {
-  //   fetch("/currentUser", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "application/json; charset=UTF-8",
-  //       accessToken: localStorage.getItem("accessToken"),
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data.user);
-  //       setCurrentUser(data.user);
-  //     });
-
-  //   fetch("/feed")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setData(data);
-  //     });
-  // }
-
   function setFeedSection() {
     setFeed(true);
   }
