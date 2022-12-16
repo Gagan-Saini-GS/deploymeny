@@ -62,37 +62,37 @@ app.get("/feed", (req, res) => {
   });
 });
 
-app.post("/currentUser", (req, res) => {
-  //   console.log(req.headers.accesstoken);
-  const accessToken = req.headers.accesstoken;
-  jwt.verify(accessToken, process.env.ACCESS_TOKEN, function (err, user) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json({ user });
-    }
-  });
-});
+// app.post("/currentUser", (req, res) => {
+//   //   console.log(req.headers.accesstoken);
+//   const accessToken = req.headers.accesstoken;
+//   jwt.verify(accessToken, process.env.ACCESS_TOKEN, function (err, user) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.json({ user });
+//     }
+//   });
+// });
 
-app.post("/login", (req, res) => {
-  const username = req.body.username;
-  const useremail = req.body.useremail;
+// app.post("/login", (req, res) => {
+//   const username = req.body.username;
+//   const useremail = req.body.useremail;
 
-  const user = new User({
-    username: username,
-    useremail: useremail,
-  });
-  user.save();
+//   const user = new User({
+//     username: username,
+//     useremail: useremail,
+//   });
+//   user.save();
 
-  const accessToken = jwt.sign(
-    {
-      username: username,
-      useremail: useremail,
-    },
-    process.env.ACCESS_TOKEN
-  );
-  res.json({ accessToken });
-});
+//   const accessToken = jwt.sign(
+//     {
+//       username: username,
+//       useremail: useremail,
+//     },
+//     process.env.ACCESS_TOKEN
+//   );
+//   res.json({ accessToken });
+// });
 
 const PORT = process.env.port || 5000;
 
